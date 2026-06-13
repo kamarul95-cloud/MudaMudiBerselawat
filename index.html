@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muda Mudi Berselawat 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; background-color: #050b14; }
+        html { scroll-behavior: smooth; }
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 8s ease-in-out infinite 2s; }
+    </style>
+</head>
+<body class="text-white min-h-screen pb-20 relative overflow-x-hidden">
+
+    <!-- Latar Belakang Glassmorphism -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-20%] w-[300px] h-[300px] bg-blue-600/40 rounded-full blur-[100px] animate-float"></div>
+        <div class="absolute top-[40%] right-[-10%] w-[250px] h-[250px] bg-purple-600/30 rounded-full blur-[90px] animate-float-delayed"></div>
+        <div class="absolute bottom-[5%] left-[10%] w-[350px] h-[350px] bg-cyan-600/20 rounded-full blur-[120px] animate-float"></div>
+    </div>
+
+    <div class="max-w-md mx-auto relative z-10 px-4 pt-10">
+
+        <!-- SEKSYEN HERO -->
+        <section class="bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] rounded-3xl p-8 text-center mb-8">
+            <div class="inline-block px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-semibold text-cyan-300 tracking-widest mb-6 backdrop-blur-md shadow-inner">
+                ✨ MALAM HEALING ROHANI ✨
+            </div>
+            <h1 class="text-4xl font-extrabold mb-2 leading-tight uppercase tracking-tight">
+                Muda Mudi <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300">Berselawat</span>
+            </h1>
+            <p class="text-gray-300 text-sm mb-8 mt-4 font-light leading-relaxed">
+                Tinggalkan sebentar kesibukan duniawi. Mari kita berkumpul, rehatkan minda, dan basahkan lidah memuji Kekasih Agung dalam satu malam yang penuh barakah.
+            </p>
+            <a href="#borang-daftar" class="block w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl text-white font-bold text-lg shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all duration-300">
+                DAFTAR SEKARANG &rarr;
+            </a>
+        </section>
+
+        <!-- SEKSYEN INFO & INTEAM -->
+        <section class="bg-white/5 backdrop-blur-md border border-white/10 shadow-xl rounded-3xl p-6 mb-8 text-center">
+            <h3 class="text-xs text-gray-300 mb-2 uppercase tracking-widest">Menggamit Nostalgia Rohani Bersama</h3>
+            <h2 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">KUMPULAN INTEAM</h2>
+            <p class="text-xs text-cyan-100/70 px-2 mb-6">"Bukan sekadar persembahan, tapi satu perjalanan rohani. Mengimbau kenangan lalu dengan lagu-lagu nasyid malar segar sambil memimpin kita mengalunkan selawat."</p>
+            
+            <div class="w-full bg-black/30 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden backdrop-blur-sm p-4">
+                <img src="https://raw.githubusercontent.com/kamarul95-cloud/hostqamarul/refs/heads/main/in%20team.png" alt="Kumpulan Inteam" class="w-full h-auto object-contain">
+            </div>
+        </section>
+
+        <!-- SEKSYEN BORANG PENDAFTARAN & API TOYYIBPAY -->
+        <section id="borang-daftar" class="bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] rounded-3xl p-8 mb-8">
+            <h2 class="text-2xl font-bold text-center mb-2 text-white">TEMPAHAN TIKET</h2>
+            <p class="text-center text-xs text-cyan-100/70 mb-6">Pembayaran pantas dan selamat menggunakan FPX.</p>
+            
+            <form id="rsvpForm" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">Nama Penuh</label>
+                    <input type="text" id="nama" required class="w-full p-3 bg-black/20 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 outline-none backdrop-blur-sm transition-all" placeholder="Masukkan nama anda">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">No. Telefon</label>
+                    <input type="tel" id="telefon" required class="w-full p-3 bg-black/20 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 outline-none backdrop-blur-sm transition-all" placeholder="01X-XXXXXXX">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">E-mel (Tiket akan dihantar ke sini)</label>
+                    <input type="email" id="emel" required class="w-full p-3 bg-black/20 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 outline-none backdrop-blur-sm transition-all" placeholder="emel@anda.com">
+                </div>
+                
+                <div class="bg-black/20 p-4 border border-white/10 rounded-xl space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-cyan-300 mb-1 ml-1">Pilih Jenis Tiket</label>
+                        <select id="jenisTiket" onchange="kiraTotal()" class="w-full p-3 bg-black/40 border border-cyan-500/30 rounded-xl text-white focus:ring-2 focus:ring-cyan-500 outline-none transition-all">
+                            <option value="Biasa" class="bg-gray-900">Tiket Biasa (RM 15)</option>
+                            <option value="Premium" class="bg-gray-900">Tiket Premium - Depan Pentas (RM 50)</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">Dewasa (Pax)</label>
+                            <input type="number" id="kuantitiDewasa" value="1" min="1" max="10" onchange="kiraTotal()" required class="w-full p-3 bg-black/40 border border-white/10 rounded-xl text-white outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">Kanak-kanak (Percuma)</label>
+                            <input type="number" id="kuantitiKanakKanak" value="0" min="0" max="10" required class="w-full p-3 bg-black/40 border border-white/10 rounded-xl text-white outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black/30 border border-cyan-500/30 rounded-2xl p-5 mt-4 text-center">
+                    <p class="text-sm text-gray-300 mb-2">Jumlah Perlu Dibayar:</p>
+                    <p class="text-3xl font-bold text-cyan-300 mb-2">RM <span id="paparanTotal">15</span></p>
+                    <p class="text-xs text-gray-400">Pembayaran akan dikendalikan oleh <span class="font-bold text-white">ToyyibPay (FPX Online Banking)</span></p>
+                </div>
+                
+                <button type="submit" id="submitBtn" class="w-full mt-2 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-lg rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:scale-[1.02] transition-all duration-300">
+                    TERUSKAN KE PEMBAYARAN
+                </button>
+                
+                <div id="statusMessage" class="hidden mt-4 text-center font-semibold text-sm py-3 rounded-xl backdrop-blur-md border"></div>
+            </form>
+        </section>
+
+    </div>
+
+    <script>
+        // Logik Pengiraan Harga
+        function kiraTotal() {
+            const jenisTiket = document.getElementById("jenisTiket").value;
+            const harga = (jenisTiket === "Premium") ? 50 : 15;
+            const paxDewasa = parseInt(document.getElementById("kuantitiDewasa").value) || 1;
+            
+            const total = harga * paxDewasa;
+            document.getElementById("paparanTotal").innerText = total;
+        }
+
+        // URL Deployment GAS yang baharu telah disahkan di sini
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzWgjJN_e1nL4JDtTRE-ClsCkjWOio4Ui8u1TaoEVjWfbMppdZDGN8hwwzn0HTrqUpdiQ/exec";
+
+        document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById("submitBtn");
+            const statusMsg = document.getElementById("statusMessage");
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Menjana Invois FPX...";
+            statusMsg.classList.remove("hidden", "bg-red-500/20", "border-red-500/50", "text-red-300");
+
+            const payload = {
+                action: "createBill",
+                nama: document.getElementById("nama").value,
+                telefon: document.getElementById("telefon").value,
+                emel: document.getElementById("emel").value,
+                jenisTiket: document.getElementById("jenisTiket").value,
+                kuantitiDewasa: document.getElementById("kuantitiDewasa").value,
+                kuantitiKanakKanak: document.getElementById("kuantitiKanakKanak").value,
+                jumlahBayaran: document.getElementById("paparanTotal").innerText
+            };
+
+            fetch(GAS_WEB_APP_URL, {
+                method: 'POST',
+                body: JSON.stringify(payload) 
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success" && data.paymentUrl) {
+                    submitBtn.innerText = "Membawa anda ke Bank...";
+                    window.location.href = data.paymentUrl;
+                } else {
+                    throw new Error(data.message || "Sistem gagal menjana pautan ToyyibPay.");
+                }
+            })
+            .catch(error => {
+                statusMsg.classList.add("bg-red-500/20", "border-red-500/50", "text-red-300");
+                statusMsg.innerText = "Ralat: " + error.message;
+                statusMsg.classList.remove("hidden");
+                submitBtn.innerText = "CUBA LAGI";
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
