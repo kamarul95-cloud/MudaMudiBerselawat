@@ -93,22 +93,6 @@
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-semibold text-cyan-300 mb-1 ml-1 mt-2">Pilih Bank Pembayaran</label>
-                    <select id="bankPilihan" required class="w-full p-3 bg-black/40 border border-cyan-500/30 rounded-xl text-white focus:ring-2 focus:ring-cyan-500 outline-none transition-all">
-                        <option value="" disabled selected>-- Pilih Bank Anda --</option>
-                        <option value="23" class="bg-gray-900">Maybank2U</option>
-                        <option value="2" class="bg-gray-900">CIMB Clicks</option>
-                        <option value="3" class="bg-gray-900">Bank Islam</option>
-                        <option value="8" class="bg-gray-900">Bank Rakyat</option>
-                        <option value="6" class="bg-gray-900">RHB Bank</option>
-                        <option value="4" class="bg-gray-900">Public Bank</option>
-                        <option value="12" class="bg-gray-900">BSN</option>
-                        <option value="7" class="bg-gray-900">Ambank</option>
-                        <option value="16" class="bg-gray-900">UOB Bank</option>
-                    </select>
-                </div>
-
                 <div class="bg-black/30 border border-cyan-500/30 rounded-2xl p-5 mt-4 text-center">
                     <p class="text-sm text-gray-300 mb-2">Jumlah Perlu Dibayar:</p>
                     <p class="text-3xl font-bold text-cyan-300 mb-2">RM <span id="paparanTotal">15</span></p>
@@ -126,7 +110,6 @@
     </div>
 
     <script>
-        // Logik Pengiraan Harga
         function kiraTotal() {
             const jenisTiket = document.getElementById("jenisTiket").value;
             const harga = (jenisTiket === "Premium") ? 50 : 15;
@@ -136,20 +119,10 @@
             document.getElementById("paparanTotal").innerText = total;
         }
 
-        // URL Deployment GAS yang baharu telah disahkan di sini
         const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzWgjJN_e1nL4JDtTRE-ClsCkjWOio4Ui8u1TaoEVjWfbMppdZDGN8hwwzn0HTrqUpdiQ/exec";
 
         document.getElementById("rsvpForm").addEventListener("submit", function(e) {
             e.preventDefault();
-            
-            // --- INILAH PENGHADANG (BLOCKER) YANG AKU TERTINGGAL TADI ---
-            const bankPilihan = document.getElementById("bankPilihan").value;
-            if (!bankPilihan || bankPilihan === "") {
-                alert("Boss, sila pilih Bank Pembayaran dari senarai (Dropdown) terlebih dahulu!");
-                document.getElementById("bankPilihan").focus();
-                return; // Berhentikan proses di sini
-            }
-            // -----------------------------------------------------------
             
             const submitBtn = document.getElementById("submitBtn");
             const statusMsg = document.getElementById("statusMessage");
@@ -166,8 +139,7 @@
                 jenisTiket: document.getElementById("jenisTiket").value,
                 kuantitiDewasa: document.getElementById("kuantitiDewasa").value,
                 kuantitiKanakKanak: document.getElementById("kuantitiKanakKanak").value,
-                jumlahBayaran: document.getElementById("paparanTotal").innerText,
-                bankId: bankPilihan // NILAI BANK DARI DROPDOWN DIMASUKKAN DI SINI
+                jumlahBayaran: document.getElementById("paparanTotal").innerText
             };
 
             fetch(GAS_WEB_APP_URL, {
@@ -177,7 +149,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success" && data.paymentUrl) {
-                    submitBtn.innerText = "Membawa anda ke Bank...";
+                    submitBtn.innerText = "Membawa anda ke ToyyibPay...";
                     window.location.href = data.paymentUrl;
                 } else {
                     throw new Error(data.message || "Sistem gagal menjana pautan ToyyibPay.");
