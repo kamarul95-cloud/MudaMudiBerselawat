@@ -142,6 +142,15 @@
         document.getElementById("rsvpForm").addEventListener("submit", function(e) {
             e.preventDefault();
             
+            // --- INILAH PENGHADANG (BLOCKER) YANG AKU TERTINGGAL TADI ---
+            const bankPilihan = document.getElementById("bankPilihan").value;
+            if (!bankPilihan || bankPilihan === "") {
+                alert("Boss, sila pilih Bank Pembayaran dari senarai (Dropdown) terlebih dahulu!");
+                document.getElementById("bankPilihan").focus();
+                return; // Berhentikan proses di sini
+            }
+            // -----------------------------------------------------------
+            
             const submitBtn = document.getElementById("submitBtn");
             const statusMsg = document.getElementById("statusMessage");
             
@@ -158,7 +167,7 @@
                 kuantitiDewasa: document.getElementById("kuantitiDewasa").value,
                 kuantitiKanakKanak: document.getElementById("kuantitiKanakKanak").value,
                 jumlahBayaran: document.getElementById("paparanTotal").innerText,
-                bankId: document.getElementById("bankPilihan").value // TANGKAP ID BANK DI SINI
+                bankId: bankPilihan // NILAI BANK DARI DROPDOWN DIMASUKKAN DI SINI
             };
 
             fetch(GAS_WEB_APP_URL, {
