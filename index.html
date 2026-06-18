@@ -7,160 +7,286 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Outfit', sans-serif; background-color: #050b14; }
-        html { scroll-behavior: smooth; }
+        body { font-family: 'Outfit', sans-serif; background-color: #050b14; scroll-behavior: smooth; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #67e8f9, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
         @keyframes float {
-            0% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-20px) scale(1.05); }
-            100% { transform: translateY(0px) scale(1); }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
         .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-delayed { animation: float 8s ease-in-out infinite 2s; }
+
+        /* Social Proof Animation */
+        #socialProof { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform: translateY(150%); opacity: 0; }
+        #socialProof.show { transform: translateY(0); opacity: 1; }
     </style>
 </head>
-<body class="text-white min-h-screen pb-20 relative overflow-x-hidden">
+<body class="text-white">
 
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-[-10%] left-[-20%] w-[300px] h-[300px] bg-blue-600/40 rounded-full blur-[100px] animate-float"></div>
-        <div class="absolute top-[40%] right-[-10%] w-[250px] h-[250px] bg-purple-600/30 rounded-full blur-[90px] animate-float-delayed"></div>
-        <div class="absolute bottom-[5%] left-[10%] w-[350px] h-[350px] bg-cyan-600/20 rounded-full blur-[120px] animate-float"></div>
+        <div class="absolute top-[-10%] left-[-20%] w-[400px] h-[400px] bg-blue-600/20 rounded-full blur-[120px] animate-float"></div>
+        <div class="absolute bottom-[10%] right-[-10%] w-[350px] h-[350px] bg-purple-600/10 rounded-full blur-[100px] animate-float" style="animation-delay: 2s;"></div>
     </div>
 
-    <div class="max-w-md mx-auto relative z-10 px-4 pt-10">
+    <div id="socialProof" class="fixed bottom-6 left-4 right-4 md:right-auto md:max-w-xs z-50 glass p-4 rounded-2xl shadow-2xl flex items-center space-x-4">
+        <div class="bg-cyan-500/20 p-2 rounded-full flex-shrink-0">
+            <svg class="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+        </div>
+        <div>
+            <p id="spMessage" class="text-xs font-bold text-white"></p>
+            <p id="spTime" class="text-[10px] text-gray-400 uppercase tracking-tighter mt-1"></p>
+        </div>
+    </div>
 
-        <section class="bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] rounded-3xl p-8 text-center mb-8">
-            <div class="inline-block px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-semibold text-cyan-300 tracking-widest mb-6 backdrop-blur-md shadow-inner">
+    <div class="max-w-xl mx-auto relative z-10 px-4">
+        
+        <header class="pt-16 pb-12 text-center">
+            <div class="inline-block px-4 py-1.5 glass rounded-full text-[10px] font-bold text-cyan-300 tracking-[0.2em] mb-6 shadow-inner">
                 ✨ MALAM HEALING ROHANI ✨
             </div>
-            <h1 class="text-4xl font-extrabold mb-2 leading-tight uppercase tracking-tight">
+            <h1 class="text-5xl font-extrabold mb-4 leading-tight tracking-tighter">
                 Muda Mudi <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300">Berselawat</span>
+                <span class="gradient-text">Berselawat</span>
             </h1>
-            <p class="text-gray-300 text-sm mb-8 mt-4 font-light leading-relaxed">
+            <p class="text-gray-400 text-base mb-10 font-light leading-relaxed px-6">
                 Tinggalkan sebentar kesibukan duniawi. Mari kita berkumpul, rehatkan minda, dan basahkan lidah memuji Kekasih Agung dalam satu malam yang penuh barakah.
             </p>
-            <a href="#borang-daftar" class="block w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl text-white font-bold text-lg shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all duration-300">
+            <a href="#borang-daftar" class="inline-block w-full py-5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl text-white font-extrabold text-lg shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:scale-[1.02] transition-all">
                 DAFTAR SEKARANG &rarr;
             </a>
+        </header>
+
+        <section class="py-12 glass rounded-[2.5rem] px-8 text-center mb-12">
+            <h2 class="text-2xl font-bold mb-4 tracking-tight">"Bila kali terakhir kita betul-betul rasa tenang?"</h2>
+            <p class="text-gray-400 text-sm leading-relaxed font-light">
+                Hari-hari kita sibuk kejar hal dunia. Kerja tak pernah habis, stress memanjang, sampaikan kadang-kadang hati rasa kosong. Malam ini direka khas untuk kita 'pause' sekejap. Kita duduk dalam majlis taman syurga, lupakan masalah, dan cari ketenangan yang sebenar melalui selawat.
+            </p>
         </section>
 
-        <section class="bg-white/5 backdrop-blur-md border border-white/10 shadow-xl rounded-3xl p-6 mb-8 text-center">
-            <h3 class="text-xs text-gray-300 mb-2 uppercase tracking-widest">Menggamit Nostalgia Rohani Bersama</h3>
-            <h2 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-2">KUMPULAN INTEAM</h2>
-            <p class="text-xs text-cyan-100/70 px-2 mb-6">"Bukan sekadar persembahan, tapi satu perjalanan rohani. Mengimbau kenangan lalu dengan lagu-lagu nasyid malar segar sambil memimpin kita mengalunkan selawat."</p>
-            
-            <div class="w-full bg-black/30 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden backdrop-blur-sm p-4">
-                <img src="https://raw.githubusercontent.com/kamarul95-cloud/hostqamarul/refs/heads/main/in%20team.png" alt="Kumpulan Inteam" class="w-full h-auto object-contain">
+        <section class="mb-12 text-center">
+            <h3 class="text-xs text-cyan-300 font-bold tracking-[0.25em] uppercase mb-3">Penampilan Khas</h3>
+            <h2 class="text-3xl font-extrabold mb-4">KUMPULAN INTEAM</h2>
+            <p class="text-gray-400 text-sm mb-8 px-4 font-light">
+                "Bukan sekadar persembahan, tapi satu perjalanan rohani. Mengimbau kenangan lalu dengan lagu-lagu nasyid malar segar sambil memimpin kita mengalunkan selawat."
+            </p>
+            <div class="glass p-2 rounded-[2rem] overflow-hidden">
+                <img src="https://raw.githubusercontent.com/kamarul95-cloud/hostqamarul/refs/heads/main/in%20team.png" alt="Inteam" class="w-full h-auto rounded-[1.8rem]">
             </div>
         </section>
 
-        <section id="borang-daftar" class="bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] rounded-3xl p-8 mb-8">
-            <h2 class="text-2xl font-bold text-center mb-2 text-white">TEMPAHAN TIKET</h2>
-            <p class="text-center text-xs text-cyan-100/70 mb-6">Pembayaran pantas dan selamat menggunakan FPX.</p>
+        <section class="py-12 glass rounded-[2.5rem] px-8 text-center mb-12">
+            <h2 class="text-2xl font-extrabold mb-2">Slot Sangat Terhad!</h2>
+            <p class="text-gray-400 text-sm mb-8 font-light">Orang-orang Kuala Terengganu, jom penuhkan Dewan TTI! Ruang adalah terhad supaya majlis kekal selesa. Kanak-kanak adalah PERCUMA.</p>
             
-            <form id="rsvpForm" class="space-y-5">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">Nama Penuh</label>
-                    <input type="text" id="nama" required class="w-full p-3 bg-black/20 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 outline-none backdrop-blur-sm transition-all" placeholder="Masukkan nama anda">
+            <div class="bg-black/40 rounded-3xl p-6 border border-cyan-500/30">
+                <p class="text-[10px] font-bold tracking-widest text-cyan-300 mb-4 uppercase">Kiraan Detik Ke Acara</p>
+                <div class="grid grid-cols-4 gap-3">
+                    <div class="glass p-3 rounded-xl"><span id="cdDays" class="text-2xl font-bold">00</span><p class="text-[9px] text-gray-500">HARI</p></div>
+                    <div class="glass p-3 rounded-xl"><span id="cdHours" class="text-2xl font-bold">00</span><p class="text-[9px] text-gray-500">JAM</p></div>
+                    <div class="glass p-3 rounded-xl"><span id="cdMins" class="text-2xl font-bold">00</span><p class="text-[9px] text-gray-500">MINIT</p></div>
+                    <div class="glass p-3 rounded-xl"><span id="cdSecs" class="text-2xl font-bold">00</span><p class="text-[9px] text-gray-500">SAAT</p></div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">No. Telefon</label>
-                    <input type="tel" id="telefon" required class="w-full p-3 bg-black/20 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 outline-none backdrop-blur-sm transition-all" placeholder="01X-XXXXXXX">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">E-mel (Tiket akan dihantar ke sini)</label>
-                    <input type="email" id="emel" required class="w-full p-3 bg-black/20 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 outline-none backdrop-blur-sm transition-all" placeholder="emel@anda.com">
-                </div>
-                
-                <div class="bg-black/20 p-4 border border-white/10 rounded-xl space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-cyan-300 mb-1 ml-1">Pilih Jenis Tiket</label>
-                        <select id="jenisTiket" onchange="kiraTotal()" class="w-full p-3 bg-black/40 border border-cyan-500/30 rounded-xl text-white focus:ring-2 focus:ring-cyan-500 outline-none transition-all">
-                            <option value="Biasa" class="bg-gray-900">Tiket Biasa (RM 15)</option>
-                            <option value="Premium" class="bg-gray-900">Tiket Premium - Depan Pentas (RM 50)</option>
-                        </select>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">Dewasa (Pax)</label>
-                            <input type="number" id="kuantitiDewasa" value="1" min="1" max="10" onchange="kiraTotal()" required class="w-full p-3 bg-black/40 border border-white/10 rounded-xl text-white outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1 ml-1">Kanak-kanak (Percuma)</label>
-                            <input type="number" id="kuantitiKanakKanak" value="0" min="0" max="10" required class="w-full p-3 bg-black/40 border border-white/10 rounded-xl text-white outline-none">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-black/30 border border-cyan-500/30 rounded-2xl p-5 mt-4 text-center">
-                    <p class="text-sm text-gray-300 mb-2">Jumlah Perlu Dibayar:</p>
-                    <p class="text-3xl font-bold text-cyan-300 mb-2">RM <span id="paparanTotal">15</span></p>
-                    <p class="text-xs text-gray-400">Pembayaran akan dikendalikan oleh <span class="font-bold text-white">ToyyibPay (FPX Online Banking)</span></p>
-                </div>
-                
-                <button type="submit" id="submitBtn" class="w-full mt-2 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-lg rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:scale-[1.02] transition-all duration-300">
-                    TERUSKAN KE PEMBAYARAN
-                </button>
-                
-                <div id="statusMessage" class="hidden mt-4 text-center font-semibold text-sm py-3 rounded-xl backdrop-blur-md border"></div>
-            </form>
+            </div>
         </section>
 
+        <section id="borang-daftar" class="py-10 glass rounded-[2.5rem] px-8 mb-20 shadow-2xl">
+            <h2 class="text-3xl font-extrabold text-center mb-2">TEMPAHAN TIKET</h2>
+            <p class="text-center text-xs text-cyan-300/60 mb-10 tracking-widest">SILA ISI MAKLUMAT DI BAWAH</p>
+
+            <form id="rsvpForm" class="space-y-6">
+                <div class="space-y-4">
+                    <div class="relative">
+                        <label class="text-[10px] font-bold text-gray-400 ml-2 mb-1 block uppercase">Nama Penuh</label>
+                        <input type="text" id="nama" required class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white outline-none focus:ring-2 focus:ring-cyan-500 transition-all" placeholder="Nama mengikut IC">
+                    </div>
+                    <div class="relative">
+                        <label class="text-[10px] font-bold text-gray-400 ml-2 mb-1 block uppercase">No. Telefon</label>
+                        <input type="tel" id="telefon" required class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white outline-none focus:ring-2 focus:ring-cyan-500 transition-all" placeholder="Contoh: 0123456789">
+                    </div>
+                    <div class="relative">
+                        <label class="text-[10px] font-bold text-gray-400 ml-2 mb-1 block uppercase">Alamat E-mel</label>
+                        <input type="email" id="emel" required class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white outline-none focus:ring-2 focus:ring-cyan-500 transition-all" placeholder="Tiket digital dihantar ke sini">
+                        <p class="text-[10px] text-cyan-400/60 mt-2 ml-2 italic">*Sila semak folder Spam jika tiket tidak diterima di Inbox.</p>
+                    </div>
+                </div>
+
+                <div class="bg-black/30 rounded-3xl p-5 border border-white/10 space-y-4 relative">
+                    <div id="loadingStok" class="absolute inset-0 bg-black/80 backdrop-blur-sm rounded-3xl flex items-center justify-center z-20">
+                        <p class="text-cyan-300 text-sm font-bold animate-pulse">MENYEMAK STOK TIKET...</p>
+                    </div>
+
+                    <p class="text-[10px] font-bold text-cyan-300 uppercase tracking-widest border-b border-white/10 pb-3 mb-4">Pilihan Tiket</p>
+                    
+                    <div class="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5">
+                        <div class="w-2/3">
+                            <p class="font-bold text-sm text-yellow-400">PREMIUM DEPAN PENTAS</p>
+                            <p class="text-[10px] text-gray-400">RM 50.00 | Baki: <span id="stokPremium" class="font-bold text-white">...</span></p>
+                        </div>
+                        <div class="w-1/4">
+                            <input type="number" id="qtyPremium" min="0" value="0" onchange="kiraTotal()" class="w-full bg-black/50 border border-white/20 rounded-xl p-2 text-center text-white font-extrabold outline-none focus:border-cyan-500">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5">
+                        <div class="w-2/3">
+                            <p class="font-bold text-sm text-white">TIKET BIASA</p>
+                            <p class="text-[10px] text-gray-400">RM 15.00 | Baki: <span id="stokBiasa" class="font-bold text-white">...</span></p>
+                        </div>
+                        <div class="w-1/4">
+                            <input type="number" id="qtyBiasa" min="0" value="0" onchange="kiraTotal()" class="w-full bg-black/50 border border-white/20 rounded-xl p-2 text-center text-white font-extrabold outline-none focus:border-cyan-500">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5 opacity-80">
+                        <div class="w-2/3">
+                            <p class="font-bold text-sm text-white">KANAK-KANAK</p>
+                            <p class="text-[10px] text-gray-400 italic">Percuma (Pengurusan)</p>
+                        </div>
+                        <div class="w-1/4">
+                            <input type="number" id="qtyKanak" min="0" value="0" class="w-full bg-black/50 border border-white/20 rounded-xl p-2 text-center text-white font-extrabold outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-cyan-900/40 to-blue-900/40 border border-cyan-500/30 rounded-3xl p-6 text-center shadow-inner">
+                    <p class="text-[10px] font-bold text-cyan-300 uppercase tracking-widest mb-1">Jumlah Perlu Dibayar</p>
+                    <p class="text-5xl font-black text-white tracking-tighter">RM <span id="paparanTotal">0</span></p>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full py-5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl text-white font-extrabold text-lg shadow-[0_4px_20px_rgba(6,182,212,0.3)] hover:scale-[1.01] active:scale-95 transition-all">
+                    PENGESAHAN BAYARAN
+                </button>
+
+                <div id="statusMessage" class="hidden text-center p-4 rounded-2xl text-sm font-bold border backdrop-blur-md"></div>
+            </form>
+        </section>
     </div>
 
     <script>
-        function kiraTotal() {
-            const jenisTiket = document.getElementById("jenisTiket").value;
-            const harga = (jenisTiket === "Premium") ? 50 : 15;
-            const paxDewasa = parseInt(document.getElementById("kuantitiDewasa").value) || 1;
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzWgjJN_e1nL4JDtTRE-ClsCkjWOio4Ui8u1TaoEVjWfbMppdZDGN8hwwzn0HTrqUpdiQ/exec";
+        let bakiSemasa = { Premium: 100, Biasa: 1000 };
+
+        // 1. COUNTDOWN TIMER (KE 3 JULAI 2026)
+        const targetDate = new Date("July 3, 2026 20:00:00").getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const gap = targetDate - now;
+
+            if (gap > 0) {
+                document.getElementById("cdDays").innerText = Math.floor(gap / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("cdHours").innerText = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("cdMins").innerText = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("cdSecs").innerText = Math.floor((gap % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }
+        setInterval(updateCountdown, 1000);
+
+        // 2. SOCIAL PROOF (SIMULASI JUALAN)
+        const names = ["Ahmad", "Syamil", "Siti", "Pok Teh", "Mamat", "Aminah", "Awang", "Mek Nor", "Zarif", "Hajah Kalsom", "Haji Samad", "Jusoh", "Muna", "Fazli", "Che Wan", "Tengku Firdaus", "Mimi", "Razak", "Musa"];
+        const ticketTypes = ["Tiket Biasa", "Tiket Premium"];
+        const buys = ["baru membeli", "sedang menempah", "telah mendaftar"];
+
+        function showSocialProof() {
+            const sp = document.getElementById("socialProof");
+            const name = names[Math.floor(Math.random() * names.length)];
+            const buy = buys[Math.floor(Math.random() * buys.length)];
+            const qty = Math.floor(Math.random() * 3) + 1;
+            const type = ticketTypes[Math.floor(Math.random() * ticketTypes.length)];
             
-            const total = harga * paxDewasa;
+            document.getElementById("spMessage").innerText = `${name} ${buy} ${qty} ${type}`;
+            document.getElementById("spTime").innerText = Math.floor(Math.random() * 5 + 1) + " minit yang lalu";
+            
+            sp.classList.add("show");
+            setTimeout(() => sp.classList.remove("show"), 5000);
+        }
+        setTimeout(showSocialProof, 3000);
+        setInterval(showSocialProof, 15000);
+
+        // 3. FETCH STOK DARI GOOGLE SHEETS (Action: getCounts)
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch(GAS_WEB_APP_URL + "?action=getCounts")
+                .then(r => r.json())
+                .then(data => {
+                    bakiSemasa.Premium = data.bakiPremium;
+                    bakiSemasa.Biasa = data.bakiBiasa;
+                    document.getElementById("stokPremium").innerText = data.bakiPremium;
+                    document.getElementById("stokBiasa").innerText = data.bakiBiasa;
+                    
+                    document.getElementById("qtyPremium").max = data.bakiPremium;
+                    document.getElementById("qtyBiasa").max = data.bakiBiasa;
+                    
+                    if(data.bakiPremium <= 0) document.getElementById("qtyPremium").disabled = true;
+                    if(data.bakiBiasa <= 0) document.getElementById("qtyBiasa").disabled = true;
+                    
+                    document.getElementById("loadingStok").style.display = "none";
+                })
+                .catch(() => {
+                    document.getElementById("loadingStok").innerHTML = "<p class='text-red-400 text-xs font-bold'>Ralat memuatkan stok. Sila refresh.</p>";
+                });
+        });
+
+        // 4. LOGIK PENGIRAAN HARGA
+        function kiraTotal() {
+            let p = parseInt(document.getElementById("qtyPremium").value) || 0;
+            let b = parseInt(document.getElementById("qtyBiasa").value) || 0;
+
+            // Pastikan tak lebih baki
+            if (p > bakiSemasa.Premium) { p = bakiSemasa.Premium; document.getElementById("qtyPremium").value = p; }
+            if (b > bakiSemasa.Biasa) { b = bakiSemasa.Biasa; document.getElementById("qtyBiasa").value = b; }
+
+            const total = (p * 50) + (b * 15);
             document.getElementById("paparanTotal").innerText = total;
         }
 
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzWgjJN_e1nL4JDtTRE-ClsCkjWOio4Ui8u1TaoEVjWfbMppdZDGN8hwwzn0HTrqUpdiQ/exec";
-
+        // 5. HANTAR BORANG KE GAS (Action: createBill)
         document.getElementById("rsvpForm").addEventListener("submit", function(e) {
             e.preventDefault();
+            const total = parseInt(document.getElementById("paparanTotal").innerText);
             
-            const submitBtn = document.getElementById("submitBtn");
-            const statusMsg = document.getElementById("statusMessage");
+            if (total === 0) {
+                alert("Sila pilih sekurang-kurangnya 1 tiket berbayar.");
+                return;
+            }
+
+            const btn = document.getElementById("submitBtn");
+            const status = document.getElementById("statusMessage");
             
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Menjana Invois FPX...";
-            statusMsg.classList.remove("hidden", "bg-red-500/20", "border-red-500/50", "text-red-300");
+            btn.disabled = true;
+            btn.innerText = "MENJANA INVOIS BANK...";
+            status.classList.add("hidden");
 
             const payload = {
                 action: "createBill",
                 nama: document.getElementById("nama").value,
                 telefon: document.getElementById("telefon").value,
                 emel: document.getElementById("emel").value,
-                jenisTiket: document.getElementById("jenisTiket").value,
-                kuantitiDewasa: document.getElementById("kuantitiDewasa").value,
-                kuantitiKanakKanak: document.getElementById("kuantitiKanakKanak").value,
-                jumlahBayaran: document.getElementById("paparanTotal").innerText
+                qtyPremium: document.getElementById("qtyPremium").value,
+                qtyBiasa: document.getElementById("qtyBiasa").value,
+                qtyKanak: document.getElementById("qtyKanak").value,
+                jumlahBayaran: total
             };
 
             fetch(GAS_WEB_APP_URL, {
-                method: 'POST',
-                body: JSON.stringify(payload) 
+                method: "POST",
+                body: JSON.stringify(payload)
             })
-            .then(response => response.json())
+            .then(r => r.json())
             .then(data => {
                 if (data.status === "success" && data.paymentUrl) {
-                    submitBtn.innerText = "Membawa anda ke ToyyibPay...";
+                    btn.innerText = "MEMBAWA ANDA KE FPX...";
                     window.location.href = data.paymentUrl;
                 } else {
-                    throw new Error(data.message || "Sistem gagal menjana pautan ToyyibPay.");
+                    throw new Error(data.message || "Gagal berhubung dengan pelayan.");
                 }
             })
-            .catch(error => {
-                statusMsg.classList.add("bg-red-500/20", "border-red-500/50", "text-red-300");
-                statusMsg.innerText = "Ralat: " + error.message;
-                statusMsg.classList.remove("hidden");
-                submitBtn.innerText = "CUBA LAGI";
-                submitBtn.disabled = false;
+            .catch(err => {
+                status.innerText = "Ralat: " + err.message;
+                status.classList.remove("hidden");
+                status.classList.add("bg-red-500/20", "border-red-500/50", "text-red-400");
+                btn.disabled = false;
+                btn.innerText = "CUBA LAGI";
             });
         });
     </script>
