@@ -78,7 +78,7 @@
 
         <section class="py-12 glass rounded-[2.5rem] px-8 text-center mb-12">
             <h2 class="text-2xl font-extrabold mb-2">Slot Sangat Terhad!</h2>
-            <p class="text-gray-400 text-sm mb-8 font-light">Orang-orang Kuala Terengganu, jom penuhkan Dewan TTI! Ruang adalah terhad supaya majlis kekal selesa. Kanak-kanak adalah PERCUMA.</p>
+            <p class="text-gray-400 text-sm mb-8 font-light">Orang-orang Kuala Terengganu, jom penuhkan Dewan TTI! Ruang adalah terhad supaya majlis kekal selesa. Kanak-kanak adalah PERCUMA (Khas untuk Tiket Biasa sahaja).</p>
             
             <div class="bg-black/40 rounded-3xl p-6 border border-cyan-500/30">
                 <p class="text-[10px] font-bold tracking-widest text-cyan-300 mb-4 uppercase">Kiraan Detik Ke Acara</p>
@@ -139,13 +139,13 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5 opacity-80">
+                    <div class="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5 opacity-80" id="containerKanak">
                         <div class="w-2/3">
                             <p class="font-bold text-sm text-white">KANAK-KANAK</p>
-                            <p class="text-[10px] text-gray-400 italic">Percuma (Pengurusan)</p>
+                            <p class="text-[10px] text-gray-400 italic">Percuma (Syarat: Pembelian Tiket Biasa)</p>
                         </div>
                         <div class="w-1/4">
-                            <input type="number" id="qtyKanak" min="0" value="0" class="w-full bg-black/50 border border-white/20 rounded-xl p-2 text-center text-white font-extrabold outline-none">
+                            <input type="number" id="qtyKanak" min="0" value="0" disabled class="w-full bg-black/50 border border-white/20 rounded-xl p-2 text-center text-white font-extrabold outline-none disabled:opacity-50 disabled:cursor-not-allowed">
                         </div>
                     </div>
                 </div>
@@ -166,9 +166,9 @@
 
     <script>
         const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzWgjJN_e1nL4JDtTRE-ClsCkjWOio4Ui8u1TaoEVjWfbMppdZDGN8hwwzn0HTrqUpdiQ/exec";
-        let bakiSemasa = { Premium: 100, Biasa: 1000 };
+        let bakiSemasa = { Premium: 100, Biasa: 2500 };
 
-        // 1. COUNTDOWN TIMER (KE 3 JULAI 2026)
+        // 1. COUNTDOWN TIMER
         const targetDate = new Date("July 3, 2026 20:00:00").getTime();
         function updateCountdown() {
             const now = new Date().getTime();
@@ -183,7 +183,7 @@
         }
         setInterval(updateCountdown, 1000);
 
-        // 2. SOCIAL PROOF (SIMULASI JUALAN)
+        // 2. SOCIAL PROOF
         const names = ["Ahmad", "Syamil", "Siti", "Pok Teh", "Mamat", "Aminah", "Awang", "Mek Nor", "Zarif", "Hajah Kalsom", "Haji Samad", "Jusoh", "Muna", "Fazli", "Che Wan", "Tengku Firdaus", "Mimi", "Razak", "Musa"];
         const ticketTypes = ["Tiket Biasa", "Tiket Premium"];
         const buys = ["baru membeli", "sedang menempah", "telah mendaftar"];
@@ -204,7 +204,7 @@
         setTimeout(showSocialProof, 3000);
         setInterval(showSocialProof, 15000);
 
-        // 3. FETCH STOK DARI GOOGLE SHEETS (Action: getCounts)
+        // 3. FETCH STOK
         document.addEventListener("DOMContentLoaded", function() {
             fetch(GAS_WEB_APP_URL + "?action=getCounts")
                 .then(r => r.json())
@@ -227,20 +227,29 @@
                 });
         });
 
-        // 4. LOGIK PENGIRAAN HARGA
+        // 4. LOGIK PENGIRAAN HARGA & KAWALAN KANAK-KANAK
         function kiraTotal() {
             let p = parseInt(document.getElementById("qtyPremium").value) || 0;
             let b = parseInt(document.getElementById("qtyBiasa").value) || 0;
+            let inputKanak = document.getElementById("qtyKanak");
 
-            // Pastikan tak lebih baki
+            // Hadkan pada baki stok
             if (p > bakiSemasa.Premium) { p = bakiSemasa.Premium; document.getElementById("qtyPremium").value = p; }
             if (b > bakiSemasa.Biasa) { b = bakiSemasa.Biasa; document.getElementById("qtyBiasa").value = b; }
+
+            // Jika pelanggan masukkan Tiket Biasa > 0, buka ruangan kanak-kanak. Jika tidak, kunci kepada 0.
+            if (b > 0) {
+                inputKanak.disabled = false;
+            } else {
+                inputKanak.value = 0;
+                inputKanak.disabled = true;
+            }
 
             const total = (p * 50) + (b * 15);
             document.getElementById("paparanTotal").innerText = total;
         }
 
-        // 5. HANTAR BORANG KE GAS (Action: createBill)
+        // 5. HANTAR BORANG KE GAS
         document.getElementById("rsvpForm").addEventListener("submit", function(e) {
             e.preventDefault();
             const total = parseInt(document.getElementById("paparanTotal").innerText);
